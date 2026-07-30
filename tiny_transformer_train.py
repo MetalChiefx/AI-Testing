@@ -377,23 +377,19 @@ def main():
 
         optimizer.zero_grad(set_to_none=True)
 
-loss.backward()
+        loss.backward()
+        optimizer.step()
 
-optimizer.step()
+    print("\nGenerating sample text...\n")
 
-print("\nGenerating sample text...\n")
+    start_token = torch.zeros((1, 1), dtype=torch.long, device=device)
+    generated_ids = model.generate(start_token, max_new_tokens=GENERATE_TOKENS)
+    generated_text = decode(generated_ids[0].tolist())
 
-start_token = torch.zeros((1, 1), dtype=torch.long, device=device)
+    print(generated_text)
 
-generated_ids = model.generate(start_token, max_new_tokens=GENERATE_TOKENS)
-
-generated_text = decode(generated_ids[0].tolist())
-
-
-print(generated_text)
-
-save_artifacts(model)
+    save_artifacts(model)
 
 
 if __name__ == "__main__":
-main()
+    main()
