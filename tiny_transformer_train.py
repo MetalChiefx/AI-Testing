@@ -15,15 +15,15 @@ MODEL_FILE = "tiny_transformer_model.pt"
 VOCAB_FILE = "tiny_transformer_vocab.json"
 
 BATCH_SIZE = 32
-BLOCK_SIZE = 64          # Context window size
-MAX_ITERS = 2000
+BLOCK_SIZE = 128          # Context window size
+MAX_ITERS = 5000
 EVAL_INTERVAL = 200
 LEARNING_RATE = 3e-4
 EVAL_ITERS = 100
 
-EMBEDDING_DIM = 128
-NUM_HEADS = 4
-NUM_LAYERS = 4
+EMBEDDING_DIM = 256
+NUM_HEADS = 8
+NUM_LAYERS = 6
 DROPOUT = 0.2
 
 GENERATE_TOKENS = 300
