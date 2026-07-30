@@ -1,0 +1,5 @@
+the server runs virtual machines
+the storage provides data to the server
+the network connects the server to the application
+virtual machines run applications
+applications use storage and network resources
