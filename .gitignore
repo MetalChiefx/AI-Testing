@@ -56,3 +56,4 @@ cover/
 
 # Workbench Project Layout
 tiny_transformer_model/tiny_transformer_model.pt
+tiny_transformer_model/model/pytorch_model.bin

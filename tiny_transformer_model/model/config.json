@@ -1,0 +1,9 @@
+{
+  "model_type": "tiny_transformer",
+  "vocab_size": 48,
+  "block_size": 128,
+  "embedding_dim": 256,
+  "num_heads": 8,
+  "num_layers": 6,
+  "dropout": 0.2
+}

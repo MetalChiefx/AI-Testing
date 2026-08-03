@@ -11,8 +11,14 @@ import time
 # --------------------------------------------------
 
 TEXT_FILE = "training_text.txt"
-MODEL_FILE = "tiny_transformer_model.pt"
-VOCAB_FILE = "tiny_transformer_vocab.json"
+MODEL_DIR = "model"
+
+MODEL_FILE = f"{MODEL_DIR}/pytorch_model.bin"
+VOCAB_FILE = f"{MODEL_DIR}/vocab.json"
+TOKENIZER_JSON = f"{MODEL_DIR}/tokenizer.json"
+TOKENIZER_CONFIG = f"{MODEL_DIR}/tokenizer_config.json"
+SPECIAL_TOKENS = f"{MODEL_DIR}/special_tokens_map.json"
+CONFIG_FILE = f"{MODEL_DIR}/config.json"
 
 BATCH_SIZE = 32
 BLOCK_SIZE = 128          # Context window size
@@ -321,26 +327,87 @@ def estimate_loss(model):
 # --------------------------------------------------
 # Save Model and Vocabulary
 # --------------------------------------------------
-
 def save_artifacts(model):
+
+    Path(MODEL_DIR).mkdir(exist_ok=True)
+
+    # Save model weights
     torch.save(model.state_dict(), MODEL_FILE)
 
-    vocab_data = {
-        "char_to_id": char_to_id,
-        "id_to_char": {str(k): v for k, v in id_to_char.items()},
+    # -----------------------------
+    # Vocabulary
+    # -----------------------------
+    with open(VOCAB_FILE, "w", encoding="utf-8") as f:
+        json.dump(char_to_id, f, indent=2, ensure_ascii=False)
+
+    # -----------------------------
+    # tokenizer.json
+    # -----------------------------
+    tokenizer_json = {
+        "version": "1.0",
+        "truncation": None,
+        "padding": None,
+        "added_tokens": [],
+        "normalizer": None,
+        "pre_tokenizer": None,
+        "post_processor": None,
+        "decoder": None,
+        "model": {
+            "type": "WordLevel",
+            "vocab": char_to_id,
+            "unk_token": "[UNK]"
+        }
+    }
+
+    with open(TOKENIZER_JSON, "w", encoding="utf-8") as f:
+        json.dump(tokenizer_json, f, indent=2, ensure_ascii=False)
+
+    # -----------------------------
+    # tokenizer_config.json
+    # -----------------------------
+    tokenizer_config = {
+        "tokenizer_class": "PreTrainedTokenizerFast",
+        "model_max_length": BLOCK_SIZE,
+        "unk_token": "[UNK]",
+        "bos_token": "[BOS]",
+        "eos_token": "[EOS]",
+        "pad_token": "[PAD]"
+    }
+
+    with open(TOKENIZER_CONFIG, "w") as f:
+        json.dump(tokenizer_config, f, indent=2)
+
+    # -----------------------------
+    # special_tokens_map.json
+    # -----------------------------
+    special_tokens = {
+        "unk_token": "[UNK]",
+        "bos_token": "[BOS]",
+        "eos_token": "[EOS]",
+        "pad_token": "[PAD]"
+    }
+
+    with open(SPECIAL_TOKENS, "w") as f:
+        json.dump(special_tokens, f, indent=2)
+
+    # -----------------------------
+    # config.json
+    # -----------------------------
+    config = {
+        "model_type": "tiny_transformer",
         "vocab_size": vocab_size,
         "block_size": BLOCK_SIZE,
         "embedding_dim": EMBEDDING_DIM,
         "num_heads": NUM_HEADS,
         "num_layers": NUM_LAYERS,
-        "dropout": DROPOUT,
+        "dropout": DROPOUT
     }
 
-    with open(VOCAB_FILE, "w", encoding="utf-8") as file:
-        json.dump(vocab_data, file, indent=4)
+    with open(CONFIG_FILE, "w") as f:
+        json.dump(config, f, indent=2)
 
-    print(f"Saved model to: {MODEL_FILE}")
-    print(f"Saved vocabulary to: {VOCAB_FILE}")
+    print(f"\nSaved model package to {MODEL_DIR}/")
+
 
 
 # --------------------------------------------------
@@ -393,3 +460,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
