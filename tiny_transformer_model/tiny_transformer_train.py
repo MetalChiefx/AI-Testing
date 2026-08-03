@@ -10,7 +10,7 @@ import time
 # Configuration
 # --------------------------------------------------
 
-TEXT_FILE = "training_text.txt"
+TRAINING_DIR = "training_data"
 MODEL_DIR = "model"
 
 MODEL_FILE = f"{MODEL_DIR}/pytorch_model.bin"
@@ -21,7 +21,7 @@ SPECIAL_TOKENS = f"{MODEL_DIR}/special_tokens_map.json"
 CONFIG_FILE = f"{MODEL_DIR}/config.json"
 
 BATCH_SIZE = 32
-BLOCK_SIZE = 128          # Context window size
+BLOCK_SIZE = 256          # Context window size
 MAX_ITERS = 5000
 EVAL_INTERVAL = 200
 LEARNING_RATE = 3e-4
@@ -55,18 +55,87 @@ print(f"Using device: {device}")
 # Load Text
 # --------------------------------------------------
 
-def load_text(file_path):
-    path = Path(file_path)
+def load_training_directory(directory):
+    """
+    Read all supported text files from a directory tree
+    and combine them into a single training corpus.
+    """
 
-    if not path.exists():
+    training_path = Path(directory)
+
+    if not training_path.exists():
         raise FileNotFoundError(
-            f"Could not find {file_path}. Create a text file named {file_path} in this folder."
+            f"Training directory not found: {directory}"
         )
 
-    return path.read_text(encoding="utf-8")
+    supported_extensions = {
+        ".txt",
+        ".md",
+        ".log",
+        ".csv",
+        ".json"
+    }
+
+    combined_text = []
+    file_count = 0
+
+    for file_path in training_path.rglob("*"):
+
+        if not file_path.is_file():
+            continue
+
+        if file_path.suffix.lower() not in supported_extensions:
+            continue
+
+        try:
+            content = file_path.read_text(
+                encoding="utf-8",
+                errors="ignore"
+            )
+
+            combined_text.append(
+                f"\n\n===== FILE: {file_path.name} =====\n\n"
+            )
+
+            combined_text.append(
+                f"""
+            
+            ### DOCUMENT START ###
+            FILE: {file_path.name}
+            
+            """
+            )
+            
+            combined_text.append(content)
+            
+            combined_text.append(
+                """
+            
+            ### DOCUMENT END ###
+            
+            """
+            )
+
+            file_count += 1
+
+            print(f"Loaded: {file_path}")
+
+        except Exception as e:
+            print(f"Skipped {file_path}: {e}")
+
+    full_text = "\n".join(combined_text)
+
+    print(f"\nTotal files loaded: {file_count}")
+    print(f"Total training characters: {len(full_text):,}")
+
+    return full_text
 
 
-text = load_text(TEXT_FILE)
+text = load_training_directory(TRAINING_DIR)
+print(
+f"Training corpus size: "
+f"{len(text):,} characters"
+)
 
 if len(text) < 100:
     print("Warning: Your text file is very small. The model may not learn useful patterns.")

@@ -1,0 +1,183 @@
+Networking Fundamentals
+
+A network is a collection of devices that communicate with each other.
+Network devices exchange data using standardized communication protocols.
+A local area network connects devices within a limited geographic area.
+A wide area network connects locations across large geographic distances.
+An enterprise network supports business applications and user connectivity.
+
+Network Components
+
+A switch connects devices within a local area network.
+A router connects different networks together.
+A firewall controls and inspects network traffic.
+A wireless access point provides Wi-Fi connectivity to users.
+A load balancer distributes network traffic across multiple servers.
+A network interface card enables a device to connect to a network.
+
+OSI Model
+
+The OSI model contains seven layers.
+The physical layer transmits electrical or optical signals.
+The data link layer provides communication between connected devices.
+The network layer provides routing and IP addressing.
+The transport layer provides reliable data delivery.
+The session layer manages communication sessions.
+The presentation layer formats and encrypts data.
+The application layer supports user applications and services.
+
+IP Addressing
+
+An IP address uniquely identifies a device on a network.
+IPv4 addresses contain four octets.
+An example IPv4 address is 192.168.1.10.
+IPv6 addresses provide a much larger address space.
+Subnet masks define network and host portions of an address.
+CIDR notation simplifies network representation.
+
+Switching
+
+A switch forwards Ethernet frames between devices.
+Switches learn MAC addresses dynamically.
+A managed switch supports configuration and monitoring.
+Unmanaged switches require minimal configuration.
+ VLANs provide logical segmentation of a network.
+A trunk port carries traffic for multiple VLANs.
+An access port carries traffic for a single VLAN.
+
+Routing
+
+A router forwards packets between networks.
+Static routes are manually configured.
+Dynamic routing protocols learn routes automatically.
+OSPF is a commonly used routing protocol.
+BGP is used to exchange routes between organizations.
+A default gateway forwards traffic to external networks.
+
+Ethernet
+
+Ethernet is the most common networking technology.
+Ethernet frames contain source and destination MAC addresses.
+Ethernet speeds include 1Gb, 10Gb, 25Gb, 40Gb, and 100Gb.
+Data center environments commonly use 25Gb and 100Gb Ethernet.
+Fiber optic connections support high-speed communications.
+
+TCP and UDP
+
+TCP provides reliable communication.
+TCP validates data delivery using acknowledgements.
+TCP is commonly used by web servers and databases.
+UDP provides connectionless communication.
+UDP has lower overhead than TCP.
+DNS and streaming applications frequently use UDP.
+
+DNS
+
+DNS stands for Domain Name System.
+DNS translates hostnames into IP addresses.
+DNS allows users to access systems using names rather than IP addresses.
+Primary DNS servers maintain authoritative records.
+Secondary DNS servers provide redundancy.
+
+DHCP
+
+DHCP automatically assigns IP addresses to devices.
+DHCP prevents manual IP address configuration.
+A DHCP scope defines available network addresses.
+DHCP servers can provide gateway and DNS information.
+
+Firewalls
+
+A firewall protects networks from unauthorized access.
+Firewalls inspect inbound and outbound traffic.
+Network security policies determine allowed communications.
+Next-generation firewalls provide advanced threat protection.
+Firewalls can filter traffic based on applications and users.
+
+Network Security
+
+Network security protects systems and data.
+Access control limits user permissions.
+Multi-factor authentication strengthens security.
+Encryption protects sensitive information.
+TLS encrypts network communications.
+VPNs provide secure remote access.
+
+Wireless Networking
+
+Wireless networks use radio frequency communications.
+Wi-Fi provides connectivity without cables.
+Wireless clients connect through access points.
+SSID identifies a wireless network.
+WPA3 provides modern wireless security.
+
+Data Center Networking
+
+Data center networks support servers and storage systems.
+Leaf-spine architectures provide predictable performance.
+Leaf switches connect directly to servers.
+Spine switches provide high-speed interconnects.
+East-west traffic moves between servers inside the data center.
+North-south traffic moves into or out of the data center.
+
+Storage Networking
+
+Storage networks connect servers to storage arrays.
+Fiber Channel is commonly used for storage networking.
+iSCSI uses Ethernet networks for storage traffic.
+Storage switches isolate storage communications.
+Storage performance is affected by latency and bandwidth.
+
+Virtualization Networking
+
+Virtual machines communicate using virtual switches.
+VMware vSwitches provide virtual network connectivity.
+Distributed virtual switches simplify management.
+Port groups define virtual network configurations.
+Virtual NICs connect virtual machines to networks.
+
+Cloud Networking
+
+Cloud networking connects resources hosted in cloud platforms.
+Virtual networks provide logical network segmentation.
+Cloud gateways enable connectivity between cloud and on-premises environments.
+Security groups control network communications.
+Load balancers improve application availability.
+
+Network Monitoring
+
+Network monitoring identifies operational issues.
+SNMP collects device information.
+Syslog stores device event messages.
+Performance monitoring measures latency and utilization.
+Packet captures help troubleshoot communication problems.
+
+High Availability
+
+Redundant switches improve network availability.
+Redundant routers reduce service interruptions.
+Link aggregation increases bandwidth and resiliency.
+Failover mechanisms maintain service continuity.
+High availability designs reduce downtime.
+
+Network Best Practices
+
+Use VLANs to separate traffic types.
+Implement redundant network paths.
+Monitor network performance continuously.
+Document network configurations.
+Apply security patches regularly.
+Encrypt sensitive communications.
+Review firewall policies periodically.
+Perform regular backup and recovery testing.
+
+Common Networking Terms
+
+Bandwidth represents data transfer capacity.
+Latency measures communication delay.
+Throughput measures actual data transfer.
+Packet loss indicates dropped network traffic.
+Jitter measures variation in packet delivery times.
+Availability measures system uptime.
+Scalability describes the ability to support growth.
+Reliability measures consistent operation.
