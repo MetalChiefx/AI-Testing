@@ -7,7 +7,7 @@ MODEL_PATH = "./tiny_transformer_model"  # Update this path to your model direct
 # Load tokenizer and model
 print("Loading model...")
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
+tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, use_fast=False)
 
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_PATH,

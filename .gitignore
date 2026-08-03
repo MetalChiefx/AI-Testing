@@ -55,3 +55,4 @@ coverage.xml
 cover/
 
 # Workbench Project Layout
+tiny_transformer_model/tiny_transformer_model.pt

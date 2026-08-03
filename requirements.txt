@@ -1,2 +1,6 @@
 jupyterlab>3.0
 torch
+transformers
+sentencepiece
+tiktoken
+tokenizers
