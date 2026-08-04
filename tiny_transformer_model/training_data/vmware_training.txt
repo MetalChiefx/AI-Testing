@@ -1,0 +1,27 @@
+VMware Fundamentals
+
+VMware vSphere is one of the most widely deployed virtualization platforms in enterprise data centers. VMware enables organizations to run multiple virtual machines on a single physical server. Virtualization improves resource utilization, simplifies administration, and increases workload flexibility.
+
+A virtual machine is a software-based computer that runs an operating system and applications. Virtual machines consume CPU, memory, storage, and network resources that are provided by a physical server. Multiple virtual machines can share the same hardware while remaining logically isolated from one another.
+
+ESXi is VMware's hypervisor. The hypervisor is installed directly on physical servers and provides the foundation for virtualization. ESXi manages hardware resources and presents virtual hardware to guest operating systems.
+
+vCenter Server provides centralized management for VMware environments. Administrators use vCenter to manage ESXi hosts, clusters, virtual machines, networking, storage, permissions, and monitoring activities. Centralized management simplifies operational tasks across large environments.
+
+A VMware cluster is a logical grouping of ESXi hosts. Clusters provide resource pooling, workload balancing, and high availability capabilities. Virtual machines within a cluster can access shared storage and utilize resources across multiple hosts.
+
+VMware High Availability, commonly called HA, automatically restarts virtual machines after a host failure. HA improves application uptime and reduces service interruptions. VMware Distributed Resource Scheduler, commonly called DRS, balances workloads across hosts based on resource consumption.
+
+vMotion enables live migration of virtual machines between ESXi hosts without application downtime. Storage vMotion allows virtual machine disks to be migrated between storage systems while workloads remain online. These capabilities provide flexibility for maintenance and resource optimization.
+
+Virtual networking in VMware environments is managed through virtual switches. Standard vSwitches and Distributed vSwitches provide connectivity between virtual machines, physical networks, and storage networks. Port groups are used to define network configuration settings for virtual machine connectivity.
+
+VMware supports multiple storage technologies including Fibre Channel, iSCSI, NFS, and VMware vSAN. Shared storage enables advanced virtualization features such as vMotion, High Availability, and Distributed Resource Scheduler.
+
+VMware vSAN is a hyperconverged storage platform that aggregates local disks across ESXi hosts into a shared datastore. vSAN simplifies infrastructure management and eliminates the requirement for traditional external storage arrays in many environments.
+
+Security is an important part of VMware administration. Administrators implement role-based access controls, multifactor authentication, encryption, patch management, and network segmentation. Security best practices help protect virtual infrastructure and hosted workloads.
+
+Monitoring and capacity planning are essential operational activities. Administrators monitor CPU utilization, memory consumption, storage performance, network throughput, and cluster health. Capacity planning ensures that sufficient resources are available for future growth.
+
+VMware environments are commonly deployed to support business-critical applications, databases, web services, and virtual desktop infrastructure. Effective VMware administration improves availability, operational efficiency, scalability, and business continuity.
