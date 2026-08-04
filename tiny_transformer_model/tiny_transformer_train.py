@@ -10,7 +10,7 @@ import time
 # Configuration
 # --------------------------------------------------
 
-TRAINING_DIR = "training_data"
+TRAINING_DIR = "./tiny_transformer_model/training_data"
 MODEL_DIR = "model"
 
 MODEL_FILE = f"{MODEL_DIR}/pytorch_model.bin"
