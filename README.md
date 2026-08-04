@@ -67,11 +67,13 @@ After training on thousands of examples, the model learns language patterns cont
 
 ### Training Data
 
-The training corpus is stored in:
-
+The training corpus is stored in .txt filed in the training_data directory.
+examples in the repo are:
 ```text
 training_text.txt
+training2.txt
 ```
+add more to see how data affect output and training time.
 
 This file can contain:
 
