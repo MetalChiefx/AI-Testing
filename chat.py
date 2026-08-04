@@ -9,7 +9,7 @@ import json
 # Model Folder Configuration
 # --------------------------------------------------
 
-MODEL_DIR = "model"
+MODEL_DIR = "./tiny_transformer_model/model"
 
 MODEL_FILE = f"{MODEL_DIR}/pytorch_model.bin"
 VOCAB_FILE = f"{MODEL_DIR}/vocab.json"
@@ -259,7 +259,7 @@ class TinyTransformerLanguageModel(nn.Module):
     def generate(
         self,
         index,
-        max_new_tokens=300,
+        max_new_tokens=1000,
         temperature=0.8,
         top_k=20
     ):
@@ -330,7 +330,7 @@ def load_model():
 def generate_response(
     model,
     prompt,
-    max_new_tokens=300,
+    max_new_tokens=1000,
     temperature=0.8,
     top_k=20
 ):
@@ -368,7 +368,7 @@ def chat_loop():
     print("  /settings   Show generation settings")
     print()
 
-    max_new_tokens = 300
+    max_new_tokens = 1000
     temperature = 0.8
     top_k = 20
 
